@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Set the item type filed automatically for mobile</description>
+        <field>cmdb_ci</field>
+        <global>true</global>
+        <messages/>
+        <name>Set Loaner Item Type</name>
+        <order/>
+        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading, isTemplate) {
+	if (isLoading)
+		return;
+	
+	g_form.getReference('cmdb_ci',checkName);
+	
+	function checkName(ci){
+		var name = ci.name + '';
+		if (name.match(/.*blackberry.*/i) || name.match(/.*iphone.*/i) || name.match(/.*android.*/i)) {
+			g_form.setValue('u_item_type', 'u_cmdb_ci_mobile_device','Mobile Phone');
+			g_form.setReadOnly('u_item_type', true);
+		} else {
+			g_form.setReadOnly('u_item_type', false);
+		}
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-02-07 11:22:14</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>d0fa196969703200e04aa300ef437caa</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Set Loaner Item Type</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="my demo" source="x_snc_my_demo">f1a0c99569303200e04aa300ef437cd3</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="my demo">f1a0c99569303200e04aa300ef437cd3</sys_scope>
+        <sys_update_name>sys_script_client_d0fa196969703200e04aa300ef437caa</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-02-07 11:22:14</sys_updated_on>
+        <table>x_snc_my_demo_table</table>
+        <type>onChange</type>
+        <ui_type>0</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

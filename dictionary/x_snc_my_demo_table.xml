@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element attributes="live_feed=true" extends="task" label="My Demo Table" max_length="40" name="x_snc_my_demo_table" type="collection"/>
+    <element attributes="live_feed=true" extends="task" label="My Demo Table" max_length="40" name="x_snc_my_demo_table" sizeclass="4" type="collection">
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Depot" max_length="40" name="depot" type="string">
+            <choice>
+                <element label="New York" sequence="0" value="ny"/>
+                <element label="London" sequence="1" value="lnd"/>
+                <element label="Buenos Aires" sequence="2" value="ba"/>
+                <element label="Santa Clara" sequence="3" value="sc"/>
+                <element label="Singapore" sequence="4" value="spr"/>
+                <element label="Sydney" sequence="5" value="syd"/>
+                <element label="Other" sequence="6" value="Other"/>
+            </choice>
+        </element>
+        <element label="End Date" max_length="40" name="end_date" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" default="u_cmdb_ci_mobile_device" label="Item Type" max_length="40" name="item_type" type="string">
+            <choice>
+                <element label="Laptop" sequence="0" value="cmdb_ci_computer"/>
+                <element label="Mobile Phone" sequence="1" value="u_cmdb_ci_mobile_device"/>
+                <element label="Projector" sequence="2" value="u_cmdb_ci_projector"/>
+            </choice>
+        </element>
+        <element label="Requested for" max_length="32" name="requested_for" reference="sys_user" type="reference"/>
+        <element label="Start Date" max_length="40" name="start_date" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" label="Location to be used" max_length="40" name="u_string_1" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Other" max_length="40" name="u_string_2" type="string"/>
+        <element label="When was this item created" max_length="40" name="when_was_this_item_created" type="glide_date"/>
+    </element>
 </database>

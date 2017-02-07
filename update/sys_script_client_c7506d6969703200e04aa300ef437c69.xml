@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description>Automatically set location to be used filed value based on user location</description>
+        <field>active</field>
+        <global>true</global>
+        <messages/>
+        <name>Set Loaner Location</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+	if (g_form.getValue('u_string_1') != '')
+		return;
+	
+	var city = g_scratchpad.city;
+	var country = g_scratchpad.country;
+	
+    if (city && country)
+	   g_form.setValue('u_string_1', city + ', ' + country);
+	else if (city)
+		g_form.setValue('u_string_1', city);
+	else if (country)
+		g_form.setValue('u_string_1', country);
+	
+	if (city || country)
+		g_form.showFieldMsg('u_string_1', 'Value set automatically - you may override by editing', 'info');
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2017-02-07 11:43:33</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>c7506d6969703200e04aa300ef437c69</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Set Loaner Location</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="my demo" source="x_snc_my_demo">f1a0c99569303200e04aa300ef437cd3</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="my demo">f1a0c99569303200e04aa300ef437cd3</sys_scope>
+        <sys_update_name>sys_script_client_c7506d6969703200e04aa300ef437c69</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2017-02-07 12:04:41</sys_updated_on>
+        <table>x_snc_my_demo_table</table>
+        <type>onLoad</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>
